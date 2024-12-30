@@ -1,28 +1,25 @@
 {
-  pkgs,
   inputs,
   system,
   ...
 }:
 {
-  extraPlugins = with pkgs.vimPlugins; [
-    blink-cmp-copilot
-  ];
-
   plugins = {
     cmp-emoji.enable = true;
     cmp-git.enable = true;
     cmp-spell.enable = true;
     cmp-calc.enable = true;
     cmp-treesitter.enable = true;
-    lsp.capabilities = # Lua
+    lsp.capabilities =
+      # Lua
       ''
         capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
       '';
     blink-cmp = {
       enable = true;
       package = inputs.blink-cmp.packages.${system}.default;
-      luaConfig.pre = # lua
+      luaConfig.pre =
+        # lua
         ''
           require('blink.compat').setup({debug = true, impersonate_nvim_cmp = true})
         '';
@@ -39,7 +36,6 @@
           default = [
             "buffer"
             "calc"
-            "copilot"
             "emoji"
             "git"
             "lsp"
@@ -53,10 +49,6 @@
             emoji = {
               name = "emoji";
               module = "blink.compat.source";
-            };
-            copilot = {
-              name = "copilot";
-              module = "blink-cmp-copilot";
             };
             git = {
               name = "git";

@@ -28,20 +28,10 @@
             }
           '';
         };
-        prettier = {
-          enable = true;
-          disableTsServerFormatter = true;
-          settings = ''
-            {
-              extra_args = { "--no-semi" },
-            }
-          '';
-        };
         stylua.enable = true;
         yamlfmt = {
           enable = true;
         };
-        hclfmt.enable = true;
       };
     };
   };

@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 let
   get_bufnrs.__raw = ''
     function()
@@ -21,26 +25,35 @@ in
       autoEnableSources = true;
       settings = {
         mapping = {
-          "<C-d>" = # Lua
+          "<C-d>" =
+            # Lua
             "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = # Lua
+          "<C-f>" =
+            # Lua
             "cmp.mapping.scroll_docs(4)";
-          "<C-Space>" = # Lua
+          "<C-Space>" =
+            # Lua
             "cmp.mapping.complete()";
-          "<C-e>" = # Lua
+          "<C-e>" =
+            # Lua
             "cmp.mapping.close()";
-          "<Tab>" = # Lua
+          "<Tab>" =
+            # Lua
             "cmp.mapping(cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}), {'i', 's'})";
-          "<S-Tab>" = # Lua
+          "<S-Tab>" =
+            # Lua
             "cmp.mapping(cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}), {'i', 's'})";
-          "<CR>" = # Lua
+          "<CR>" =
+            # Lua
             "cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace })";
         };
 
-        preselect = # Lua
+        preselect =
+          # Lua
           "cmp.PreselectMode.None";
 
-        snippet.expand = # Lua
+        snippet.expand =
+          # Lua
           "function(args) require('luasnip').lsp_expand(args.body) end";
 
         sources = [
@@ -56,13 +69,6 @@ in
             priority = 1000;
             option = {
               inherit get_bufnrs;
-            };
-          }
-          {
-            name = "gitlab";
-            priority = 1000;
-            option = {
-              hosts = [ "https://gitlab.dnm.radiofrance.fr" ];
             };
           }
           {
@@ -91,10 +97,6 @@ in
             };
           }
           {
-            name = "copilot";
-            priority = 400;
-          }
-          {
             name = "rg";
             priority = 300;
           }
@@ -112,10 +114,6 @@ in
           }
           {
             name = "git";
-            priority = 250;
-          }
-          {
-            name = "zsh";
             priority = 250;
           }
           {
@@ -143,7 +141,6 @@ in
           buffer = "";
           calc = "";
           cmdline = "";
-          codeium = "󱜙";
           emoji = "󰞅";
           git = "";
           luasnip = "󰩫";
@@ -166,7 +163,7 @@ in
       key = "<C-k>";
       action.__raw = ''
         function()
-         local ls = require "luasnip" 
+         local ls = require "luasnip"
          if ls.expand_or_jumpable() then
            ls.expand_or_jump()
          end
@@ -181,7 +178,7 @@ in
       key = "<C-j>";
       action.__raw = ''
         function()
-         local ls = require "luasnip" 
+         local ls = require "luasnip"
          if ls.jumpable(-1) then
            ls.jump(-1)
          end

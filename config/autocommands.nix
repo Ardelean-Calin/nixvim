@@ -28,13 +28,7 @@
         "latex"
         "markdown"
       ];
-      command = "setlocal spell spelllang=en,fr";
-    }
-    # Hilight yank text
-    {
-      event = "TextYankPost";
-      pattern = "*";
-      command = "lua vim.highlight.on_yank{timeout=500}";
+      command = "setlocal spell spelllang=en";
     }
     # Enter git buffer in insert mode
     {

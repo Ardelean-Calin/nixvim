@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 {
   imports = [
     ./autocommands.nix
@@ -10,9 +14,7 @@
 
     ./plug/completion/avante.nix
     ./plug/completion/blink.nix
-    ./plug/completion/blink-compat.nix
     ./plug/completion/cmp.nix
-    ./plug/completion/copilot-cmp.nix
     ./plug/completion/schemastore.nix
 
     ./plug/git/gitblame.nix
@@ -82,7 +84,6 @@
     assistant = lib.mkOption {
       default = "none";
       type = lib.types.enum [
-        "copilot"
         "none"
       ];
     };

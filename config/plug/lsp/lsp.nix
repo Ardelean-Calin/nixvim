@@ -1,9 +1,4 @@
 {
-  lib,
-  pkgs,
-  ...
-}:
-{
   plugins = {
     lsp-format = {
       enable = true;
@@ -12,30 +7,11 @@
       enable = true;
       inlayHints = true;
       servers = {
-        html = {
-          enable = true;
-        };
         lua_ls = {
           enable = true;
         };
         nixd = {
           enable = true;
-          settings =
-            let
-              flake = ''(builtins.getFlake "github:elythh/flake)""'';
-            in
-            {
-              nixpkgs = {
-                expr = "import ${flake}.inputs.nixpkgs { }";
-              };
-              formatting = {
-                command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
-              };
-              options = {
-                nixos.expr = ''${flake}.nixosConfigurations.grovetender.options'';
-                nixvim.expr = ''${flake}.packages.${pkgs.system}.nvim.options'';
-              };
-            };
         };
         markdown_oxide = {
           enable = true;
@@ -44,9 +20,6 @@
           enable = true;
         };
         gopls = {
-          enable = true;
-        };
-        terraformls = {
           enable = true;
         };
         yamlls = {
